@@ -30,9 +30,12 @@ def file_response(path, filename, media_type="application/pdf"):
     asyncio.create_task(cleanup(path))
     return FileResponse(path, filename=filename, media_type=media_type)
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse as FR
+
 @app.get("/")
 def root():
-    return {"status": "PDFForge backend running", "tools": 27}
+    return FR("index.html")
 
 @app.get("/health")
 def health():
