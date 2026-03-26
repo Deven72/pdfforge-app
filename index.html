@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PDFForge | 27+ Free PDF Tools Online</title>
+<meta name="description" content="Free online PDF tools — merge, split, compress, convert, edit, sign PDFs. No signup needed. 100% free forever."/>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<!-- REPLACE with your AdSense publisher ID after approval -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--brand:#ff4d2e;--bd:#d93d20;--dark:#0a0a0f;--d2:#13131a;--d3:#1c1c26;--mid:#2a2a38;--bdr:rgba(255,255,255,0.08);--txt:#f0f0f5;--mut:#7878a0;--r:14px;--rs:8px;--f:'Plus Jakarta Sans',sans-serif;--fd:'Syne',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--dark);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:var(--f);cursor:pointer;border:none;background:none}
+input,textarea,select{font-family:var(--f)}
+a{text-decoration:none;color:inherit}
+
+.hdr{position:sticky;top:0;z-index:100;height:64px;background:rgba(10,10,15,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr)}
+.hdr-in{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;padding:0 24px;gap:6px}
+.logo{display:flex;align-items:center;gap:9px;cursor:pointer;margin-right:auto}
+.logo-ic{width:34px;height:34px;border-radius:9px;background:var(--brand);display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:20px;height:20px}
+.logo-tx{font-family:var(--fd);font-size:18px}
+.logo-tx b{color:var(--brand)}
+.nav{display:flex;align-items:center;gap:2px}
+.nb{padding:7px 13px;border-radius:var(--rs);font-size:14px;font-weight:500;color:var(--mut);transition:.15s}
+.nb:hover{color:var(--txt);background:var(--mid)}
+.ndd{position:relative}
+.ndd:hover .ddm{display:grid}
+.ddm{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;grid-template-columns:repeat(3,172px);gap:3px 14px;box-shadow:0 20px 60px rgba(0,0,0,.5);min-width:544px}
+.ddh{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);padding:4px 8px 8px}
+.ddi{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:var(--rs);font-size:13px;color:var(--mut);transition:.15s;text-align:left;width:100%}
+.ddi:hover{background:var(--mid);color:var(--txt)}
+.ddot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.nav-r{display:flex;align-items:center;gap:7px;margin-left:12px}
+.bg{padding:7px 15px;border-radius:var(--rs);font-size:14px;font-weight:500;color:var(--mut);transition:.15s}
+.bg:hover{color:var(--txt);background:var(--mid)}
+.bp{padding:8px 18px;background:var(--brand);color:#fff;border-radius:var(--rs);font-size:14px;font-weight:700;transition:.2s}
+.bp:hover{background:var(--bd)}
+.mbb{display:none;padding:8px;font-size:20px;color:var(--txt)}
+.mmenu{display:none;flex-direction:column;background:var(--d2);border-top:1px solid var(--bdr);padding:10px;gap:3px}
+.mmenu.open{display:flex}
+.mi{padding:11px 15px;border-radius:var(--rs);font-size:14px;color:var(--mut);text-align:left;transition:.15s}
+.mi:hover{background:var(--mid);color:var(--txt)}
+.mi.ac{background:var(--brand);color:#fff;font-weight:700}
+.msep{height:1px;background:var(--bdr);margin:5px 0}
+
+.adw{max-width:1200px;margin:0 auto;padding:0 24px}
+.adb{background:var(--d2);border:1px dashed var(--bdr);border-radius:var(--rs);padding:10px 20px;text-align:center;margin:20px 0}
+.adl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);display:block;margin-bottom:5px}
+.adph{color:var(--mut);font-size:13px;padding:14px 0;background:rgba(255,255,255,.02);border-radius:6px}
+
+.hero{max-width:1200px;margin:0 auto;padding:66px 24px 46px;display:flex;align-items:center;gap:54px}
+.herol{flex:1}
+.bdg{display:inline-flex;align-items:center;gap:5px;background:rgba(255,77,46,.1);color:var(--brand);border:1px solid rgba(255,77,46,.2);border-radius:100px;padding:5px 13px;font-size:13px;font-weight:600;margin-bottom:17px}
+.h1{font-family:var(--fd);font-size:clamp(32px,5.5vw,60px);font-weight:800;line-height:1.1;margin-bottom:15px}
+.ac{color:var(--brand)}
+.hsub{font-size:16px;color:var(--mut);line-height:1.7;margin-bottom:24px;max-width:440px}
+.hsc{display:flex;align-items:center;gap:9px;background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:4px 15px;max-width:420px;transition:.2s}
+.hsc:focus-within{border-color:rgba(255,77,46,.4)}
+.hsc input{flex:1;background:none;border:none;outline:none;font-size:15px;color:var(--txt);padding:11px 0}
+.hsc input::placeholder{color:var(--mut)}
+.sic{color:var(--mut);font-size:17px}
+.heror{flex:0 0 245px;display:flex;justify-content:center}
+.pst{position:relative;width:162px;height:200px}
+.pc{position:absolute;border-radius:12px;border:1px solid var(--bdr)}
+.pc3{width:122px;height:162px;bottom:0;left:0;background:var(--d3);transform:rotate(-7deg)}
+.pc2{width:135px;height:175px;bottom:8px;left:12px;background:var(--mid);transform:rotate(-2deg)}
+.pc1{width:150px;height:188px;bottom:14px;left:13px;background:linear-gradient(135deg,#1c1c30,#13132a);border-color:rgba(255,77,46,.25);transform:rotate(2deg);display:flex;flex-direction:column;padding:14px;gap:7px}
+.pln{flex:1;display:flex;flex-direction:column;gap:7px}
+.pln div{height:3px;border-radius:2px;background:rgba(255,255,255,.07)}
+.pln div:nth-child(1){width:80%}.pln div:nth-child(2){width:55%}.pln div:nth-child(3){width:70%}.pln div:nth-child(4){width:42%}
+.pc1 span{color:var(--brand);font-size:10px;font-weight:700}
+
+.sec{max-width:1200px;margin:0 auto;padding:0 24px 58px}
+.sch{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px;flex-wrap:wrap;gap:10px}
+.sct{font-family:var(--fd);font-size:24px;font-weight:700}
+.ctabs{display:flex;gap:3px;background:var(--d2);border:1px solid var(--bdr);border-radius:10px;padding:3px;flex-wrap:wrap}
+.ctab{padding:6px 12px;border-radius:7px;font-size:13px;font-weight:600;color:var(--mut);transition:.15s}
+.ctab:hover{color:var(--txt)}
+.ctab.on{background:var(--brand);color:#fff}
+.tgr{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tc{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:15px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.2s}
+.tc:hover{background:var(--d3);border-color:rgba(255,255,255,.14);transform:translateY(-2px)}
+.tic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.tb h3{font-size:13px;font-weight:700;margin-bottom:2px}
+.tb p{font-size:11px;color:var(--mut);line-height:1.3}
+.tar{font-size:15px;opacity:0;transition:.2s;flex-shrink:0}
+.tc:hover .tar{opacity:1;transform:translateX(3px)}
+.nores{text-align:center;padding:46px 20px;color:var(--mut)}
+.nores p{font-size:16px;margin-bottom:9px}
+.nores button{color:var(--brand);font-size:14px;font-weight:600}
+
+.fgr{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.fcd{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:22px}
+.fcd .fi{font-size:24px;margin-bottom:10px}
+.fcd h3{font-size:15px;font-weight:700;margin-bottom:5px}
+.fcd p{font-size:13px;color:var(--mut);line-height:1.6}
+
+.sts{max-width:1200px;margin:0 24px 58px;display:flex;align-items:center;background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden}
+.st{flex:1;padding:24px 16px;text-align:center}
+.st strong{display:block;font-family:var(--fd);font-size:28px;font-weight:800;color:var(--brand)}
+.st span{font-size:13px;color:var(--mut)}
+.stsp{width:1px;height:46px;background:var(--bdr);flex-shrink:0}
+
+.tp{max-width:680px;margin:0 auto;padding:40px 24px 78px}
+.bk{color:var(--brand);font-size:14px;font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:20px}
+.tph{display:flex;align-items:center;gap:14px;margin-bottom:26px;padding-bottom:20px;border-bottom:2px solid}
+.tpic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.tph h1{font-family:var(--fd);font-size:23px;font-weight:700;margin-bottom:3px}
+.tph p{font-size:14px;color:var(--mut)}
+.tpb{display:flex;flex-direction:column;gap:12px}
+
+.dz{display:flex;flex-direction:column;align-items:center;gap:9px;border:2px dashed var(--bdr);border-radius:var(--r);padding:40px 20px;cursor:pointer;text-align:center;background:var(--d2);transition:.2s}
+.dz:hover,.dz.drag{border-color:var(--brand);background:rgba(255,77,46,.04)}
+.dzic{font-size:36px;color:var(--mut);transition:.2s}
+.dz:hover .dzic{color:var(--brand)}
+.dztt{font-size:15px;font-weight:700}
+.dzsb{font-size:12px;color:var(--mut)}
+.dzbt{background:var(--brand);color:#fff;padding:8px 20px;border-radius:var(--rs);font-size:13px;font-weight:700;margin-top:3px}
+
+.fl{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden}
+.flh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bdr);font-size:13px;color:var(--mut)}
+.flcl{color:var(--brand);font-size:13px;font-weight:600}
+.flr{display:flex;align-items:center;gap:9px;padding:10px 14px;border-bottom:1px solid var(--bdr)}
+.flr:last-child{border-bottom:none}
+.flbd{background:rgba(255,77,46,.1);color:var(--brand);border-radius:4px;padding:2px 6px;font-size:10px;font-weight:700;flex-shrink:0}
+.fln{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flsz{font-size:12px;color:var(--mut);flex-shrink:0}
+.flac{display:flex;gap:3px}
+.flac button{width:25px;height:25px;border-radius:5px;background:var(--mid);color:var(--mut);font-size:11px;display:flex;align-items:center;justify-content:center;transition:.15s}
+.flac button:hover{background:var(--brand);color:#fff}
+.flac button:disabled{opacity:.3;cursor:not-allowed}
+
+.ob{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:17px;display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.og{display:flex;flex-direction:column;gap:5px;flex:1;min-width:90px}
+.og label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.oi{background:var(--mid);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--txt);font-size:15px;font-weight:600;padding:9px 12px;outline:none;width:100%;transition:.2s}
+.oi:focus{border-color:var(--brand)}
+.os{color:var(--mut);font-size:17px;padding-top:16px}
+.rbs{display:flex;gap:9px}
+.rb{flex:1;padding:12px;background:var(--d2);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--mut);font-size:14px;font-weight:600;transition:.2s}
+.rb:hover,.rb.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+.ab{width:100%;padding:14px;background:var(--brand);color:#fff;border-radius:var(--r);font-size:16px;font-weight:700;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.ab:hover{background:var(--bd);transform:translateY(-1px)}
+.ab:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.abo{background:transparent;border:1px solid var(--bdr);color:var(--txt)}
+.abo:hover{background:var(--mid);transform:none}
+.spn{width:19px;height:19px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.sb{display:flex;align-items:center;gap:12px;background:rgba(45,196,122,.07);border:1px solid rgba(45,196,122,.2);border-radius:var(--r);padding:12px 16px}
+.sic2{width:32px;height:32px;border-radius:50%;background:rgba(45,196,122,.12);color:#2dc47a;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.sb strong{display:block;color:#2dc47a;font-size:14px;margin-bottom:1px}
+.sb p{font-size:13px;color:var(--mut)}
+
+.lp{max-width:760px;margin:0 auto;padding:50px 24px 78px}
+.lp h1{font-family:var(--fd);font-size:34px;font-weight:800;margin-bottom:7px}
+.lp .upd{font-size:13px;color:var(--mut);margin-bottom:32px}
+.lp h2{font-size:18px;font-weight:700;margin:28px 0 9px}
+.lp p{font-size:15px;color:var(--mut);line-height:1.8;margin-bottom:12px}
+.lp ul{margin:0 0 12px 18px}
+.lp ul li{font-size:15px;color:var(--mut);line-height:1.8;margin-bottom:4px}
+.lp a{color:var(--brand)}
+.ldiv{height:1px;background:var(--bdr);margin:26px 0}
+.cgr{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.cic{display:flex;flex-direction:column;gap:14px}
+.cic-c{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:18px}
+.cic-c h3{font-size:15px;font-weight:700;margin-bottom:5px}
+.cic-c p{font-size:13px;color:var(--mut)}
+.cic-c a{color:var(--brand);font-size:14px;font-weight:600}
+.cfm{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
+.cfm label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);display:block;margin-bottom:4px}
+.cfm input,.cfm textarea,.cfm select{width:100%;background:var(--mid);border:1px solid var(--bdr);border-radius:var(--rs);color:var(--txt);font-size:14px;padding:10px 12px;outline:none;transition:.2s;resize:none}
+.cfm input:focus,.cfm textarea:focus,.cfm select:focus{border-color:var(--brand)}
+.cfm textarea{height:105px}
+
+.pgp{max-width:880px;margin:0 auto;padding:56px 24px 78px}
+.pgh{text-align:center;margin-bottom:40px}
+.pgh h1{font-family:var(--fd);font-size:34px;font-weight:800;margin-bottom:9px}
+.pgh p{font-size:16px;color:var(--mut)}
+.pgg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px;margin-bottom:26px}
+.pgc{background:var(--d2);border:1px solid var(--bdr);border-radius:var(--r);padding:24px;position:relative}
+.pgc.ft{border-color:var(--brand)}
+.pgb{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--brand);color:#fff;font-size:11px;font-weight:700;padding:3px 13px;border-radius:100px;white-space:nowrap}
+.pgc h2{font-family:var(--fd);font-size:19px;margin-bottom:9px}
+.pga{display:flex;align-items:baseline;gap:3px;margin-bottom:17px}
+.pga strong{font-family:var(--fd);font-size:35px;font-weight:800;color:var(--brand)}
+.pga span{font-size:14px;color:var(--mut)}
+.pgfl{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pgfl li{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:6px}
+.pgfl li::before{content:"✓";color:var(--brand);font-weight:700}
+
+.footer{background:var(--d2);border-top:1px solid var(--bdr);margin-top:54px}
+.ftin{max-width:1200px;margin:0 auto;padding:50px 24px 32px;display:flex;gap:42px;flex-wrap:wrap}
+.ftbr{flex:0 0 210px}
+.ftbr p{font-size:13px;color:var(--mut);margin:9px 0 15px;line-height:1.6}
+.socs{display:flex;gap:6px}
+.soc{width:32px;height:32px;border-radius:7px;background:var(--mid);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--mut);transition:.15s}
+.soc:hover{background:var(--brand);color:#fff}
+.ftcs{flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:24px}
+.ftc h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--txt);margin-bottom:10px}
+.ftc button{display:block;font-size:13px;color:var(--mut);text-align:left;padding:3px 0;transition:.15s;width:100%}
+.ftc button:hover{color:var(--txt)}
+.ftbt{max-width:1200px;margin:0 auto;padding:15px 24px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--mut)}
+
+@media(max-width:800px){
+  .nav,.nav-r{display:none}
+  .mbb{display:flex;margin-left:auto}
+  .hero{flex-direction:column;padding:36px 20px;gap:24px}
+  .heror{display:none}
+  .h1{font-size:28px}
+  .tgr{grid-template-columns:1fr 1fr}
+  .sch{flex-direction:column;align-items:flex-start}
+  .sts{flex-wrap:wrap;margin:0 20px 48px}
+  .stsp{display:none}
+  .ftin{gap:24px}
+  .ftbr{flex:none}
+  .pgg{grid-template-columns:1fr}
+  .rbs{flex-direction:column}
+  .cgr{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .tgr{grid-template-columns:1fr}
+  .h1{font-size:24px}
+  .ctabs{flex-wrap:wrap}
+  .ctab{padding:5px 9px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect}=React;
+const BACKEND="https://pdfforge-app.onrender.com";
+
+const TOOLS=[
+  {id:"merge",     icon:"🔗",label:"Merge PDF",        color:"#e05c2d",desc:"Combine PDFs in the order you want",        cat:"organize",ext:"pdf"},
+  {id:"split",     icon:"✂️",label:"Split PDF",         color:"#2d7de0",desc:"Extract specific pages from any PDF",       cat:"organize",ext:"pdf"},
+  {id:"compress",  icon:"🗜️",label:"Compress PDF",      color:"#2dc47a",desc:"Reduce file size, maximize quality",        cat:"organize",ext:"pdf"},
+  {id:"rotate",    icon:"↻", label:"Rotate PDF",        color:"#e01d6a",desc:"Rotate your PDFs any direction",             cat:"organize",ext:"pdf"},
+  {id:"organize",  icon:"📋",label:"Organize PDF",      color:"#7ae01d",desc:"Sort, delete or add PDF pages",              cat:"organize",ext:"pdf"},
+  {id:"crop",      icon:"⬛",label:"Crop PDF",           color:"#e0701d",desc:"Crop margins or select specific areas",      cat:"organize",ext:"pdf"},
+  {id:"pdf-word",  icon:"📄",label:"PDF to Word",       color:"#2b5ce6",desc:"Convert PDF to editable Word document",      cat:"convert", ext:"docx"},
+  {id:"pdf-ppt",   icon:"📊",label:"PDF to PowerPoint", color:"#d04a1e",desc:"Turn PDFs into editable slideshows",         cat:"convert", ext:"pptx"},
+  {id:"pdf-excel", icon:"📈",label:"PDF to Excel",      color:"#1e7e34",desc:"Pull data from PDFs into Excel",             cat:"convert", ext:"xlsx"},
+  {id:"word-pdf",  icon:"📝",label:"Word to PDF",       color:"#1a4fc4",desc:"Convert DOC and DOCX files to PDF",          cat:"convert", ext:"pdf"},
+  {id:"ppt-pdf",   icon:"🖼️",label:"PowerPoint to PDF", color:"#b83c10",desc:"Convert PPT and PPTX to PDF",               cat:"convert", ext:"pdf"},
+  {id:"excel-pdf", icon:"📉",label:"Excel to PDF",      color:"#155724",desc:"Convert Excel spreadsheets to PDF",          cat:"convert", ext:"pdf"},
+  {id:"pdf-jpg",   icon:"🖼️",label:"PDF to JPG",        color:"#e0961d",desc:"Convert PDF pages to JPG images",           cat:"convert", ext:"zip"},
+  {id:"jpg-pdf",   icon:"📸",label:"JPG to PDF",        color:"#c47a2d",desc:"Convert JPG images into a PDF",              cat:"convert", ext:"pdf"},
+  {id:"html-pdf",  icon:"🌐",label:"HTML to PDF",       color:"#e05c1d",desc:"Convert webpages to PDF instantly",          cat:"convert", ext:"pdf"},
+  {id:"edit",      icon:"✏️",label:"Edit PDF",          color:"#6a1de0",desc:"Add text, images and annotations",           cat:"edit",    ext:"pdf"},
+  {id:"sign",      icon:"✍️",label:"Sign PDF",          color:"#1d8ae0",desc:"Add your signature to any PDF",              cat:"edit",    ext:"pdf"},
+  {id:"watermark", icon:"💧",label:"Watermark PDF",     color:"#7a2de0",desc:"Stamp a text or image watermark on PDF",     cat:"edit",    ext:"pdf"},
+  {id:"pagenums",  icon:"🔢",label:"Page Numbers",      color:"#1de0a0",desc:"Add page numbers into PDFs",                 cat:"edit",    ext:"pdf"},
+  {id:"ocr",       icon:"🔍",label:"OCR PDF",           color:"#e01d1d",desc:"Make scanned PDFs searchable",               cat:"edit",    ext:"pdf"},
+  {id:"compare",   icon:"⚖️",label:"Compare PDF",       color:"#5c1de0",desc:"Compare two PDF versions side by side",      cat:"edit",    ext:"pdf"},
+  {id:"redact",    icon:"🔲",label:"Redact PDF",        color:"#555",   desc:"Permanently remove sensitive information",   cat:"edit",    ext:"pdf"},
+  {id:"repair",    icon:"🔧",label:"Repair PDF",        color:"#e0c41d",desc:"Fix damaged or corrupt PDF files",           cat:"edit",    ext:"pdf"},
+  {id:"protect",   icon:"🔐",label:"Protect PDF",       color:"#1d5ce0",desc:"Encrypt PDFs with a password",              cat:"security",ext:"pdf"},
+  {id:"unlock",    icon:"🔓",label:"Unlock PDF",        color:"#2dc4c4",desc:"Remove PDF password security",              cat:"security",ext:"pdf"},
+  {id:"pdf-pdfa",  icon:"📦",label:"PDF to PDF/A",      color:"#a01d7a",desc:"Convert to ISO archival format",            cat:"security",ext:"pdf"},
+  {id:"scan-pdf",  icon:"📷",label:"Scan to PDF",       color:"#d04a7a",desc:"Capture document scans instantly",          cat:"security",ext:"pdf"},
+];
+const CATS=[{id:"all",label:"All Tools"},{id:"organize",label:"Organize"},{id:"convert",label:"Convert"},{id:"edit",label:"Edit"},{id:"security",label:"Security"}];
+
+async function mergePDFs(files){
+  const {PDFDocument}=await import("https://cdn.skypack.dev/pdf-lib");
+  const out=await PDFDocument.create();
+  for(const f of files){const b=await f.arrayBuffer();const d=await PDFDocument.load(b);const p=await out.copyPages(d,d.getPageIndices());p.forEach(pg=>out.addPage(pg));}
+  return await out.save();
+}
+async function splitPDF(file,from,to){
+  const {PDFDocument}=await import("https://cdn.skypack.dev/pdf-lib");
+  const b=await file.arrayBuffer();const src=await PDFDocument.load(b);const out=await PDFDocument.create();
+  const total=src.getPageCount();const idx=[];
+  for(let i=Math.max(0,from-1);i<=Math.min(to-1,total-1);i++)idx.push(i);
+  const p=await out.copyPages(src,idx);p.forEach(pg=>out.addPage(pg));
+  return await out.save();
+}
+async function rotatePDF(file,deg){
+  const {PDFDocument,degrees}=await import("https://cdn.skypack.dev/pdf-lib");
+  const b=await file.arrayBuffer();const doc=await PDFDocument.load(b);
+  doc.getPages().forEach(p=>p.setRotation(degrees(deg)));
+  return await doc.save();
+}
+function dlBytes(bytes,name,type="application/pdf"){
+  const blob=new Blob([bytes],{type});const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);
+}
+async function callBackend(toolId,files,extra={}){
+  const fd=new FormData();
+  if(["merge","jpg-pdf"].includes(toolId))files.forEach(f=>fd.append("files",f));
+  else if(files.length)fd.append("file",files[0]);
+  Object.entries(extra).forEach(([k,v])=>fd.append(k,v));
+  const res=await fetch(`${BACKEND}/process/${toolId}`,{method:"POST",body:fd});
+  if(!res.ok){const t=await res.text().catch(()=>"");throw new Error(t||"Server error. If this is the first request, the server may be waking up — wait 30s and try again.");}
+  return res.blob();
+}
+
+function Ad(){
+  return(
+    <div className="adw">
+      <div className="adb">
+        <span className="adl">Advertisement</span>
+        <div className="adph">Google AdSense — Replace this with your ad code after approval</div>
+      </div>
+    </div>
+  );
+}
+
+function LogoSvg(){
+  return(
+    <svg viewBox="0 0 20 20" fill="none">
+      <rect x="2" y="1" width="12" height="15" rx="2" stroke="#fff" strokeWidth="1.4"/>
+      <path d="M6 6h6M6 9h6M6 12h4" stroke="#fff" strokeWidth="1.4" strokeLinecap="round"/>
+      <circle cx="16" cy="16" r="4" fill="#ff4d2e"/>
+      <path d="M14.5 16h3M16 14.5v3" stroke="#fff" strokeWidth="1.1" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function Header({nav,mob,setMob}){
+  const org=TOOLS.filter(t=>t.cat==="organize").slice(0,5);
+  const con=TOOLS.filter(t=>t.cat==="convert").slice(0,5);
+  const edi=TOOLS.filter(t=>t.cat==="edit").slice(0,5);
+  return(
+    <>
+    <header className="hdr">
+      <div className="hdr-in">
+        <div className="logo" onClick={()=>nav("home")}><div className="logo-ic"><LogoSvg/></div><span className="logo-tx">PDF<b>Forge</b></span></div>
+        <nav className="nav">
+          <button className="nb" onClick={()=>nav("home")}>Home</button>
+          <div className="ndd">
+            <button className="nb">Tools ▾</button>
+            <div className="ddm">
+              <div className="ddh">Organize</div><div className="ddh">Convert</div><div className="ddh">Edit</div>
+              {org.map(t=><button key={t.id} className="ddi" onClick={()=>nav(t.id)}><span className="ddot" style={{background:t.color}}/>{t.label}</button>)}
+              {con.map(t=><button key={t.id} className="ddi" onClick={()=>nav(t.id)}><span className="ddot" style={{background:t.color}}/>{t.label}</button>)}
+              {edi.map(t=><button key={t.id} className="ddi" onClick={()=>nav(t.id)}><span className="ddot" style={{background:t.color}}/>{t.label}</button>)}
+            </div>
+          </div>
+          <button className="nb" onClick={()=>nav("pricing")}>Pricing</button>
+        </nav>
+        <div className="nav-r">
+          <button className="bg">Log in</button>
+          <button className="bp">Sign up free</button>
+        </div>
+        <button className="mbb" onClick={()=>setMob(!mob)}>{mob?"✕":"☰"}</button>
+      </div>
+    </header>
+    <div className={`mmenu${mob?" open":""}`}>
+      {["merge","split","compress","rotate","pdf-word","pdf-jpg","ocr","protect"].map(id=>{
+        const t=TOOLS.find(x=>x.id===id);
+        return <button key={id} className="mi" onClick={()=>{nav(id);setMob(false);}}>{t.icon} {t.label}</button>;
+      })}
+      <div className="msep"/>
+      <button className="mi">Log in</button>
+      <button className="mi ac" onClick={()=>{nav("pricing");setMob(false);}}>Sign up free</button>
+    </div>
+    </>
+  );
+}
+
+function Dz({onFiles,multiple,accept=".pdf"}){
+  const [drag,setDrag]=useState(false);
+  return(
+    <label className={`dz${drag?" drag":""}`} onDragOver={e=>{e.preventDefault();setDrag(true);}} onDragLeave={()=>setDrag(false)} onDrop={e=>{e.preventDefault();setDrag(false);onFiles(Array.from(e.dataTransfer.files));}}>
+      <div className="dzic">📤</div>
+      <div className="dztt">{multiple?"Click or drag your files here":"Click or drag your file here"}</div>
+      <div className="dzsb">{multiple?"Select multiple files":"Supports PDF, images, Office files"}</div>
+      <div className="dzbt">Select File{multiple?"s":""}</div>
+      <input type="file" accept={accept} multiple={multiple} hidden onChange={e=>onFiles(Array.from(e.target.files))}/>
+    </label>
+  );
+}
+
+function FL({files,setFiles,move=false}){
+  function mv(i,d){const a=[...files];const j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];setFiles(a);}
+  return(
+    <div className="fl">
+      <div className="flh"><span>{files.length} file{files.length>1?"s":""} selected</span><button className="flcl" onClick={()=>setFiles([])}>Clear all</button></div>
+      {files.map((f,i)=>(
+        <div key={i} className="flr">
+          <span className="flbd">{f.name.split(".").pop().toUpperCase()}</span>
+          <span className="fln">{f.name}</span>
+          <span className="flsz">{(f.size/1024).toFixed(0)} KB</span>
+          <div className="flac">
+            {move&&<><button onClick={()=>mv(i,-1)} disabled={i===0}>↑</button><button onClick={()=>mv(i,1)} disabled={i===files.length-1}>↓</button></>}
+            <button onClick={()=>setFiles(files.filter((_,j)=>j!==i))}>✕</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SFR({file,onRm}){
+  return(
+    <div className="flr" style={{background:"var(--d2)",border:"1px solid var(--bdr)",borderRadius:"var(--r)"}}>
+      <span className="flbd">{file.name.split(".").pop().toUpperCase()}</span>
+      <span className="fln">{file.name}</span>
+      <span className="flsz">{(file.size/1024).toFixed(0)} KB</span>
+      <div className="flac"><button onClick={onRm}>✕</button></div>
+    </div>
+  );
+}
+
+function OK({msg}){return(<div className="sb"><div className="sic2">✓</div><div><strong>Done!</strong><p>{msg}</p></div></div>);}
+
+function TW({tool,nav,children}){
+  return(
+    <div className="tp">
+      <button className="bk" onClick={()=>nav("home")}>← Back to all tools</button>
+      <div className="tph" style={{borderColor:tool.color}}>
+        <div className="tpic" style={{background:tool.color+"18",color:tool.color}}>{tool.icon}</div>
+        <div><h1>{tool.label}</h1><p>{tool.desc}</p></div>
+      </div>
+      <div className="tpb">{children}</div>
+    </div>
+  );
+}
+
+function MergePage({nav}){
+  const [files,setFiles]=useState([]);const [load,setLoad]=useState(false);const [done,setDone]=useState(false);
+  const tool=TOOLS.find(t=>t.id==="merge");
+  async function go(){if(files.length<2)return alert("Please select at least 2 PDF files!");setLoad(true);try{const b=await mergePDFs(files);dlBytes(b,"merged.pdf");setDone(true);}catch(e){alert("Error: "+e.message);}setLoad(false);}
+  return(<TW tool={tool} nav={nav}><Dz onFiles={f=>{setFiles(p=>[...p,...f]);setDone(false);}} multiple accept=".pdf"/>{files.length>0&&<FL files={files} setFiles={f=>{setFiles(f);setDone(false);}} move/>}<Ad/><button className="ab" onClick={go} disabled={load||files.length<2}>{load?<span className="spn"/>:"🔗 Merge PDFs"}</button>{done&&<OK msg="Your merged PDF has been downloaded!"/>}</TW>);
+}
+
+function SplitPage({nav}){
+  const [file,setFile]=useState(null);const [from,setFrom]=useState(1);const [to,setTo]=useState(1);const [load,setLoad]=useState(false);const [done,setDone]=useState(false);
+  const tool=TOOLS.find(t=>t.id==="split");
+  async function go(){if(!file)return alert("Please select a PDF!");setLoad(true);try{const b=await splitPDF(file,Number(from),Number(to));dlBytes(b,"split.pdf");setDone(true);}catch(e){alert("Error: "+e.message);}setLoad(false);}
+  return(<TW tool={tool} nav={nav}><Dz onFiles={f=>{setFile(f[0]);setDone(false);}} accept=".pdf"/>{file&&<SFR file={file} onRm={()=>setFile(null)}/>}<div className="ob"><div className="og"><label>From page</label><input className="oi" type="number" min="1" value={from} onChange={e=>setFrom(e.target.value)}/></div><div className="os">—</div><div className="og"><label>To page</label><input className="oi" type="number" min="1" value={to} onChange={e=>setTo(e.target.value)}/></div></div><Ad/><button className="ab" onClick={go} disabled={load||!file}>{load?<span className="spn"/>:"✂️ Split PDF"}</button>{done&&<OK msg="Your split PDF has been downloaded!"/>}</TW>);
+}
+
+function RotatePage({nav}){
+  const [file,setFile]=useState(null);const [deg,setDeg]=useState(90);const [load,setLoad]=useState(false);const [done,setDone]=useState(false);
+  const tool=TOOLS.find(t=>t.id==="rotate");
+  async function go(){if(!file)return alert("Please select a PDF!");setLoad(true);try{const b=await rotatePDF(file,deg);dlBytes(b,"rotated.pdf");setDone(true);}catch(e){alert("Error: "+e.message);}setLoad(false);}
+  return(<TW tool={tool} nav={nav}><Dz onFiles={f=>{setFile(f[0]);setDone(false);}} accept=".pdf"/>{file&&<SFR file={file} onRm={()=>setFile(null)}/>}<div className="rbs">{[90,180,270].map(d=><button key={d} className={`rb${deg===d?" on":""}`} onClick={()=>setDeg(d)}><span style={{display:"inline-block",transform:`rotate(${d}deg)`}}>↑</span> {d}°</button>)}</div><Ad/><button className="ab" onClick={go} disabled={load||!file}>{load?<span className="spn"/>:"↻ Rotate PDF"}</button>{done&&<OK msg="Your rotated PDF has been downloaded!"/>}</TW>);
+}
+
+function BackendPage({toolId,nav}){
+  const tool=TOOLS.find(t=>t.id===toolId);
+  const [files,setFiles]=useState([]);const [load,setLoad]=useState(false);const [done,setDone]=useState(false);const [extra,setExtra]=useState({});
+  const multi=["merge","jpg-pdf"].includes(toolId);
+  const acc=toolId==="jpg-pdf"?".jpg,.jpeg,.png":toolId==="word-pdf"?".doc,.docx":toolId==="ppt-pdf"?".ppt,.pptx":toolId==="excel-pdf"?".xls,.xlsx":".pdf";
+  async function go(){
+    if(!files.length&&toolId!=="html-pdf")return alert("Please select a file!");
+    setLoad(true);
+    try{
+      const blob=await callBackend(toolId,files,extra);
+      dlBytes(await blob.arrayBuffer(),`pdfforge_${toolId}.${tool.ext}`,blob.type);
+      setDone(true);
+    }catch(e){alert("Error: "+e.message);}
+    setLoad(false);
+  }
+  return(
+    <TW tool={tool} nav={nav}>
+      {toolId!=="html-pdf"&&<><Dz onFiles={f=>multi?setFiles(p=>[...p,...f]):setFiles([f[0]])} multiple={multi} accept={acc}/>{files.length>0&&(multi?<FL files={files} setFiles={setFiles} move/>:<SFR file={files[0]} onRm={()=>setFiles([])}/>)}</>}
+      {toolId==="protect"&&<div className="ob"><div className="og"><label>Set Password</label><input className="oi" type="text" placeholder="e.g. mypassword123" onChange={e=>setExtra(x=>({...x,password:e.target.value}))}/></div></div>}
+      {toolId==="unlock"&&<div className="ob"><div className="og"><label>PDF Password</label><input className="oi" type="text" placeholder="Enter the current password" onChange={e=>setExtra(x=>({...x,password:e.target.value}))}/></div></div>}
+      {toolId==="watermark"&&<div className="ob"><div className="og"><label>Watermark Text</label><input className="oi" type="text" placeholder="e.g. CONFIDENTIAL" onChange={e=>setExtra(x=>({...x,text:e.target.value}))}/></div><div className="og"><label>Opacity (0–1)</label><input className="oi" type="number" min="0" max="1" step="0.1" defaultValue="0.3" onChange={e=>setExtra(x=>({...x,opacity:e.target.value}))}/></div></div>}
+      {toolId==="html-pdf"&&<div className="ob"><div className="og"><label>Webpage URL</label><input className="oi" type="text" placeholder="https://example.com" onChange={e=>setExtra(x=>({...x,url:e.target.value}))}/></div></div>}
+      {toolId==="pagenums"&&<div className="ob"><div className="og"><label>Position</label><select className="oi" onChange={e=>setExtra(x=>({...x,position:e.target.value}))}><option value="bottom-center">Bottom Center</option><option value="top-center">Top Center</option><option value="bottom-right">Bottom Right</option><option value="bottom-left">Bottom Left</option></select></div><div className="og"><label>Start number</label><input className="oi" type="number" min="1" defaultValue="1" onChange={e=>setExtra(x=>({...x,start:e.target.value}))}/></div></div>}
+      <Ad/>
+      <button className="ab" onClick={go} disabled={load||(files.length===0&&toolId!=="html-pdf")}>
+        {load?<><span className="spn"/> Processing...</>:`${tool.icon} Process ${tool.label}`}
+      </button>
+      {done&&<OK msg={`Your ${tool.label} file has been downloaded!`}/>}
+      <div style={{background:"var(--d2)",border:"1px solid var(--bdr)",borderRadius:"var(--rs)",padding:"11px 15px",fontSize:12,color:"var(--mut)",display:"flex",gap:7,alignItems:"center"}}>
+        <span>ℹ️</span><span>Powered by our backend server. If slow, it may be warming up — please wait 30 seconds and try again. All files are deleted immediately after processing.</span>
+      </div>
+    </TW>
+  );
+}
+
+function Home({nav}){
+  const [cat,setCat]=useState("all");const [srch,setSrch]=useState("");
+  const filtered=TOOLS.filter(t=>(cat==="all"||t.cat===cat)&&(t.label.toLowerCase().includes(srch.toLowerCase())||t.desc.toLowerCase().includes(srch.toLowerCase())));
+  return(
+    <div>
+      <section className="hero">
+        <div className="herol">
+          <div className="bdg">✦ {TOOLS.length}+ Free PDF Tools</div>
+          <h1 className="h1">Every PDF tool<br/><span className="ac">you'll ever need</span></h1>
+          <p className="hsub">Merge, split, compress, convert, edit, sign and more. All 100% free. No signup required.</p>
+          <div className="hsc"><span className="sic">⌕</span><input placeholder="Search tools — merge, compress, sign..." value={srch} onChange={e=>setSrch(e.target.value)}/></div>
+        </div>
+        <div className="heror"><div className="pst"><div className="pc pc3"/><div className="pc pc2"/><div className="pc pc1"><div className="pln"><div/><div/><div/><div/></div><span>PDF</span></div></div></div>
+      </section>
+      <Ad/>
+      <section className="sec">
+        <div className="sch">
+          <h2 className="sct">All PDF Tools</h2>
+          <div className="ctabs">{CATS.map(c=><button key={c.id} className={`ctab${cat===c.id?" on":""}`} onClick={()=>setCat(c.id)}>{c.label}</button>)}</div>
+        </div>
+        <div className="tgr">
+          {filtered.map(t=>(
+            <div key={t.id} className="tc" onClick={()=>nav(t.id)}>
+              <div className="tic" style={{background:t.color+"18",color:t.color}}>{t.icon}</div>
+              <div className="tb"><h3>{t.label}</h3><p>{t.desc}</p></div>
+              <span className="tar" style={{color:t.color}}>→</span>
+            </div>
+          ))}
+        </div>
+        {!filtered.length&&<div className="nores"><p>No tools found for "{srch}"</p><button onClick={()=>setSrch("")}>Clear search</button></div>}
+      </section>
+      <Ad/>
+      <section className="sec">
+        <h2 className="sct" style={{marginBottom:13}}>Why PDFForge?</h2>
+        <div className="fgr">
+          {[{icon:"🔒",t:"Secure & Private",d:"Files are encrypted in transit. We never store your documents after processing."},{icon:"⚡",t:"Lightning Fast",d:"Browser-based processing for most tools. Instant results with no waiting."},{icon:"🌐",t:"Works Everywhere",d:"Any device — desktop, tablet or mobile. No app or installation needed."},{icon:"♾️",t:"100% Free",d:"Every single tool is completely free. No hidden charges ever."}].map(f=>(
+            <div key={f.t} className="fcd"><div className="fi">{f.icon}</div><h3>{f.t}</h3><p>{f.d}</p></div>
+          ))}
+        </div>
+      </section>
+      <div className="sts" style={{margin:"0 24px 56px"}}>
+        <div className="st"><strong>50M+</strong><span>PDFs processed</span></div><div className="stsp"/>
+        <div className="st"><strong>180+</strong><span>Countries served</span></div><div className="stsp"/>
+        <div className="st"><strong>4.8★</strong><span>User rating</span></div><div className="stsp"/>
+        <div className="st"><strong>100%</strong><span>Free forever</span></div>
+      </div>
+    </div>
+  );
+}
+
+function Pricing(){
+  return(
+    <div className="pgp">
+      <div className="pgh"><h1>Simple, honest pricing</h1><p>Everything is free right now. Pro plans coming soon.</p></div>
+      <div className="pgg">
+        {[
+          {name:"Free",price:"₹0",period:"forever",feats:["All 27+ tools","Unlimited usage","No file size limits","No watermarks","No signup needed","100% free forever"],cta:"Start using free",ft:true},
+          {name:"Pro (Coming Soon)",price:"₹99",period:"/month",feats:["Everything in Free","Priority processing","Batch processing","API access","Email support","Early new tools"],cta:"Join waitlist",ft:false},
+          {name:"Business (Coming Soon)",price:"₹499",period:"/month",feats:["Everything in Pro","5 team accounts","Custom branding","Priority support","SLA guarantee","Dedicated manager"],cta:"Contact sales",ft:false},
+        ].map(p=>(
+          <div key={p.name} className={`pgc${p.ft?" ft":""}`}>
+            {p.ft&&<div className="pgb">Current Plan</div>}
+            <h2>{p.name}</h2>
+            <div className="pga"><strong>{p.price}</strong><span>{p.period}</span></div>
+            <ul className="pgfl">{p.feats.map(f=><li key={f}>{f}</li>)}</ul>
+            <button className={`ab${p.ft?"":" abo"}`}>{p.cta}</button>
+          </div>
+        ))}
+      </div>
+      <Ad/>
+    </div>
+  );
+}
+
+function Security(){
+  return(<div className="lp"><h1>Security</h1><p className="upd">Last updated: January 2026</p><p>At PDFForge, security is our top priority. We take every measure to ensure your files and data are protected.</p><div className="ldiv"/><h2>🔒 File Encryption</h2><p>All transfers between your browser and our servers use TLS 1.3 (HTTPS). Your files are never transmitted in plain text.</p><h2>🗑️ Automatic File Deletion</h2><p>All uploaded and processed files are automatically deleted from our servers within 1 hour. We never store documents permanently.</p><h2>🌐 No Third-Party Sharing</h2><p>We never share, sell, or transfer your files to any third party. Your documents are used solely for your requested operation.</p><h2>🖥️ Browser-Side Processing</h2><p>Tools like Merge, Split and Rotate process files entirely in your browser — your files never leave your device for these operations.</p><h2>🔐 Server Security</h2><ul><li>Servers hosted on secure cloud infrastructure</li><li>Regular security audits and updates</li><li>Firewall and DDoS protection enabled</li><li>No logs of file content are stored</li></ul><div className="ldiv"/><p>Found a security issue? Contact us at <a href="mailto:security@pdfforge.app">security@pdfforge.app</a></p></div>);
+}
+
+function Privacy(){
+  return(<div className="lp"><h1>Privacy Policy</h1><p className="upd">Last updated: January 2026</p><p>This Privacy Policy explains how PDFForge collects, uses and protects your information when you use our website.</p><div className="ldiv"/><h2>1. Information We Collect</h2><ul><li><strong>Files you upload:</strong> Only for processing. Deleted within 1 hour automatically.</li><li><strong>Usage data:</strong> Anonymous analytics to improve our service.</li><li><strong>Email address:</strong> Only if you voluntarily sign up for notifications.</li></ul><h2>2. How We Use Your Information</h2><ul><li>To process your PDF files as requested</li><li>To improve and maintain our services</li><li>To show relevant advertisements via Google AdSense</li></ul><h2>3. Cookies</h2><p>We use cookies for analytics (Google Analytics) and advertising (Google AdSense). You can disable cookies in your browser settings at any time.</p><h2>4. Google AdSense</h2><p>We use Google AdSense to display advertisements. Google may use cookies based on your prior visits. Opt out at <a href="https://www.google.com/settings/ads" target="_blank">Google Ad Settings</a>.</p><h2>5. Your Rights</h2><ul><li>Right to access your personal data</li><li>Right to deletion of your data</li><li>Right to opt out of marketing emails</li></ul><h2>6. Contact</h2><p>For privacy concerns: <a href="mailto:privacy@pdfforge.app">privacy@pdfforge.app</a></p></div>);
+}
+
+function Terms(){
+  return(<div className="lp"><h1>Terms &amp; Conditions</h1><p className="upd">Last updated: January 2026</p><p>By using PDFForge, you agree to these terms. Please read them carefully.</p><div className="ldiv"/><h2>1. Use of Service</h2><p>PDFForge provides free PDF processing tools. You may use our service for personal and commercial purposes, provided you comply with these terms.</p><h2>2. Prohibited Use</h2><ul><li>Uploading illegal, copyrighted, or malicious files</li><li>Attempting to hack, overload or disrupt our servers</li><li>Processing files you do not own or have rights to</li><li>Automated bulk processing without our permission</li></ul><h2>3. No Warranty</h2><p>PDFForge is provided "as is" without warranty. We do not guarantee 100% uptime or that all tools will work perfectly for every file.</p><h2>4. Limitation of Liability</h2><p>PDFForge shall not be liable for any loss of data, loss of profits, or indirect damages from use of our service.</p><h2>5. Intellectual Property</h2><p>You retain full ownership of any files you upload. We claim no ownership over your documents.</p><h2>6. Contact</h2><p>Questions? Contact us at <a href="mailto:legal@pdfforge.app">legal@pdfforge.app</a></p></div>);
+}
+
+function Cookies(){
+  return(<div className="lp"><h1>Cookie Policy</h1><p className="upd">Last updated: January 2026</p><p>This page explains what cookies are, which ones we use and how you can control them.</p><div className="ldiv"/><h2>What are cookies?</h2><p>Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences.</p><h2>Cookies we use</h2><ul><li><strong>Essential cookies:</strong> Required for the site to function. Cannot be disabled.</li><li><strong>Analytics cookies:</strong> Google Analytics — anonymous usage data.</li><li><strong>Advertising cookies:</strong> Google AdSense — to show relevant ads.</li></ul><h2>How to control cookies</h2><p>You can control and delete cookies through your browser settings:</p><ul><li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li><li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank">Mozilla Firefox</a></li><li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471" target="_blank">Safari</a></li></ul><h2>Opt out of advertising</h2><p>Opt out at <a href="https://www.google.com/settings/ads" target="_blank">Google Ad Settings</a>.</p></div>);
+}
+
+function Contact(){
+  const [sent,setSent]=useState(false);
+  return(
+    <div className="lp">
+      <h1>Contact Us</h1>
+      <p className="upd">We typically respond within 24 hours.</p>
+      <div className="cgr">
+        <div className="cic">
+          {[{icon:"📧",t:"Email Support",v:"support@pdfforge.app",href:"mailto:support@pdfforge.app"},{icon:"🐛",t:"Report a Bug",v:"bugs@pdfforge.app",href:"mailto:bugs@pdfforge.app"},{icon:"💼",t:"Business",v:"business@pdfforge.app",href:"mailto:business@pdfforge.app"},{icon:"🔒",t:"Security",v:"security@pdfforge.app",href:"mailto:security@pdfforge.app"}].map(c=>(
+            <div key={c.t} className="cic-c"><h3>{c.icon} {c.t}</h3><a href={c.href}>{c.v}</a></div>
+          ))}
+        </div>
+        <div className="cfm">
+          {sent?(<div className="sb"><div className="sic2">✓</div><div><strong>Message sent!</strong><p>We'll get back to you within 24 hours.</p></div></div>):(
+            <>
+              <div><label>Your Name</label><input type="text" placeholder="Your Name"/></div>
+              <div><label>Email Address</label><input type="email" placeholder="name@example.com"/></div>
+              <div><label>Subject</label><select><option>General Question</option><option>Bug Report</option><option>Feature Request</option><option>Business Enquiry</option><option>Other</option></select></div>
+              <div><label>Message</label><textarea placeholder="How can we help you?"/></div>
+              <button className="ab" onClick={()=>setSent(true)}>Send Message</button>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Footer({nav}){
+  return(
+    <footer className="footer">
+      <div className="ftin">
+        <div className="ftbr">
+          <div className="logo" onClick={()=>nav("home")}><div className="logo-ic"><LogoSvg/></div><span className="logo-tx">PDF<b>Forge</b></span></div>
+          <p>The complete PDF toolkit. Free, fast and secure for everyone.</p>
+          <div className="socs"><a href="#" className="soc">𝕏</a><a href="#" className="soc">in</a><a href="#" className="soc">f</a></div>
+        </div>
+        <div className="ftcs">
+          <div className="ftc">
+            <h4>Product</h4>
+            <button onClick={()=>nav("home")}>Home</button>
+            <button onClick={()=>nav("home")}>Features</button>
+            <button onClick={()=>nav("pricing")}>Pricing</button>
+            <button onClick={()=>nav("home")}>All PDF Tools</button>
+            <button onClick={()=>nav("contact")}>FAQ</button>
+          </div>
+          <div className="ftc">
+            <h4>Top Tools</h4>
+            <button onClick={()=>nav("merge")}>Merge PDF</button>
+            <button onClick={()=>nav("split")}>Split PDF</button>
+            <button onClick={()=>nav("compress")}>Compress PDF</button>
+            <button onClick={()=>nav("pdf-word")}>PDF to Word</button>
+            <button onClick={()=>nav("sign")}>Sign PDF</button>
+          </div>
+          <div className="ftc">
+            <h4>Convert</h4>
+            <button onClick={()=>nav("pdf-jpg")}>PDF to JPG</button>
+            <button onClick={()=>nav("jpg-pdf")}>JPG to PDF</button>
+            <button onClick={()=>nav("word-pdf")}>Word to PDF</button>
+            <button onClick={()=>nav("excel-pdf")}>Excel to PDF</button>
+            <button onClick={()=>nav("html-pdf")}>HTML to PDF</button>
+          </div>
+          <div className="ftc">
+            <h4>Legal</h4>
+            <button onClick={()=>nav("security")}>Security</button>
+            <button onClick={()=>nav("privacy")}>Privacy Policy</button>
+            <button onClick={()=>nav("terms")}>Terms &amp; Conditions</button>
+            <button onClick={()=>nav("cookies")}>Cookies</button>
+            <button onClick={()=>nav("contact")}>Contact Us</button>
+          </div>
+        </div>
+      </div>
+      <div className="ftbt"><span>© 2026 PDFForge. All rights reserved.</span><span>Made with ♥ for everyone</span></div>
+    </footer>
+  );
+}
+
+function App(){
+  const getHash=()=>window.location.hash.replace("#","")||"home";
+  const [page,setPage]=useState(getHash);
+  const [mob,setMob]=useState(false);
+
+  useEffect(()=>{
+    const onPop=()=>{setPage(getHash());setMob(false);window.scrollTo(0,0);};
+    window.addEventListener("popstate",onPop);
+    return()=>window.removeEventListener("popstate",onPop);
+  },[]);
+
+  function nav(p){
+    if(p===page)return;
+    window.history.pushState(null,"","#"+p);
+    setPage(p);setMob(false);window.scrollTo(0,0);
+  }
+
+  useEffect(()=>{
+    const t=TOOLS.find(x=>x.id===page);
+    document.title=t?`${t.label} — PDFForge | Free PDF Tools`:"PDFForge | 27+ Free PDF Tools Online";
+  },[page]);
+
+  const tool=TOOLS.find(t=>t.id===page);
+
+  function render(){
+    if(page==="home")     return <Home nav={nav}/>;
+    if(page==="pricing")  return <Pricing/>;
+    if(page==="security") return <Security/>;
+    if(page==="privacy")  return <Privacy/>;
+    if(page==="terms")    return <Terms/>;
+    if(page==="cookies")  return <Cookies/>;
+    if(page==="contact")  return <Contact/>;
+    if(page==="merge")    return <MergePage nav={nav}/>;
+    if(page==="split")    return <SplitPage nav={nav}/>;
+    if(page==="rotate")   return <RotatePage nav={nav}/>;
+    if(tool)              return <BackendPage toolId={page} nav={nav}/>;
+    return <Home nav={nav}/>;
+  }
+
+  return(<div><Header nav={nav} mob={mob} setMob={setMob}/><main style={{minHeight:"80vh"}}>{render()}</main><Footer nav={nav}/></div>);
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
